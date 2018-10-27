@@ -3,7 +3,7 @@
 
 <?php
 
-$con = mysqli_connect("localhost", "root", "");
+$con = mysqli_connect("localhost", "root", "", "event_creator");
 
 if (!$con)
 
@@ -13,31 +13,24 @@ if (!$con)
 
   }
 
-mysqli_select_db($con, "test");
+mysqli_select_db($con, "users");
 
-$password_string = mysqli_real_escape_string($con, '$_POST[password]');
+$password_string = mysqli_real_escape_string($con, $_POST[password]);
 // The value of $password_hash
 // should similar to the following:
 // $2y$10$aHhnT035EnQGbWAd8PfEROs7PJTHmr6rmzE2SvCQWOygSpGwX2rtW
-$password_hash = password_hash($password_string, PASSWORD_BCRYPT);
+$password_hash = password_hash($password_string, PASSWORD_DEFAULT);
 
 
-
-$sql="INSERT INTO users (Username, Password, ID, Name)
+$sql="INSERT INTO users (first_name, last_name, username, password, level, email)
 VALUES
-('$_POST[username]','$password_hash', '34344', '$_POST[name]')";
+('$_POST[first_name]', '$password_string', '$_POST[username]', '$password_hash', '$_POST[level]', '$_POST[email]')";
 
-if (!mysqli_query($con, $sql))
+mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 
-  {
 
-  die('Error: ');
-
-  }
-
-echo "1 record added";
-
-mysqli_close($con)
+mysqli_close($con);
+header("location: Registration1.html");
 
 ?>
 
