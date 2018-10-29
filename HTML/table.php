@@ -6,15 +6,17 @@ $db_pass = ''; // Password
 $db_name = 'event_creator'; // Database Name
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if (!$conn) {
+if (!$conn) 
+{
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
-
-$sql = "SELECT username, first_name, level from users";
+$user_level = $_SESSION['level'];
+$sql = "SELECT name, category, phone, email from events where type = 1";
 		
 $query = mysqli_query($conn, $sql);
 
-if (!$query) {
+if (!$query) 
+{
 	die ('SQL Error: ' . mysqli_error($conn));
 }
 ?>
@@ -24,20 +26,21 @@ if (!$query) {
 		<caption class="title">User Events</caption>
 		<thead>
 			<tr>
-				<th>username</th>
-				<th>first_name</th>		
-				<th>level</th>
+				<th>Event Name</th>
+				<th>Category</th>		
+				<th>Phone Number</th>
+				<th>Email</th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php
-		echo $_SESSION["LoggedIn"];
 		while ($row = mysqli_fetch_array($query))
 		{
 			echo '<tr>
-					<td>'.$row['username'].'</td>
-					<td>'.$row['first_name'].'</td>
-					<td>'.$row['level'].'</td>
+					<td>'.$row['name'].'</td>
+					<td>'.$row['category'].'</td>
+					<td>'.$row['phone'].'</td>
+					<td>'.$row['email'].'</td>
 				</tr>';
 
 		}?>

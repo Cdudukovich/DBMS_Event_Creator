@@ -7,26 +7,25 @@
 	<title>Boilerplate</title>
 	<meta name="author" content="Nathan Borror">
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
-  <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
-
+  <!--[if lte IE 6]><link rel="stylesheet" href="stylesheets/lib/ie6.css" type="text/css" media="screen" charset="utf-8"><![endif]-->
 </head>
 <body>
+
 <div id="page">
   <div id="header">
-    <h1>Events</h1>
-      <a href="logout.php" class="btn btn-success">logout</a>
+    <h1>Registered Student Organizations</h1>
+        <button class="logout_button" onclick="location.href=logout.php">Logout</button>
   </div>
-
-  
+  <div class=login>
   <div id="navigation">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
       <li><a href="RSO.html">RSO</a></li>
     </ul>
   </div>
+  
+  <div id="body" class="wrapper">
     
-    <?php include("table.php"); ?>
-  </div>
   
   <div id="footer">
     <ul class="tabs">

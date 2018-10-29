@@ -12,24 +12,28 @@ $_SESSION["Level"] = "admin";
 $myUserName = $_POST['username'];
 $myPassword = $_POST['password'];
 
+$_SESSION["username"] = $myUserName;
+
 $query = "SELECT * FROM users WHERE username = '$myUserName'";
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if (!$conn) {
     die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
 }
+
 $sql = "SELECT username, first_name, level from users";     
 $result1 = mysqli_query($conn, $query);
 $count1 = mysqli_num_rows($result1); 
 if($count1 == 1)
 {
-    $query2 = "SELECT password FROM users WHERE username='$myUserName'";
+    $query2 = "SELECT password, level FROM users WHERE username='$myUserName'";
 
     $result2 = mysqli_query($conn, $query2);
     $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
     $hash = $row['password'];
     if ( password_verify( "$myPassword", $hash ) ) 
         {
+            $_SESSION["level"] = $row['level'];
             #$_SESSION['user_id'] = $user->ID;
             echo " <script>alert('Password is Correct'); window.location.href='events.php'</script>";
         }
