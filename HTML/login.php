@@ -35,7 +35,7 @@ if($count1 == 1)
         {
             $_SESSION["level"] = $row['level'];
             #$_SESSION['user_id'] = $user->ID;
-            echo " <script>alert('Password is Correct'); window.location.href='events.php'</script>";
+            echo " <script> window.location.href='events.php'</script>";
         }
         else
         {

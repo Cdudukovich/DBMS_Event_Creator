@@ -4,8 +4,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Boilerplate</title>
-	<meta name="author" content="Nathan Borror">
+	<title>Events</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
 
@@ -13,8 +12,9 @@
 <body>
 <div id="page">
   <div id="header">
-    <h1>Events</h1>
-      <a href="logout.php" class="btn btn-success">logout</a>
+    <h1>Events</h1>  
+          <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
+
   </div>
 
   

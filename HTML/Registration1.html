@@ -4,8 +4,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Boilerplate</title>
-	<meta name="author" content="Nathan Borror">
+	<title>Registration</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
@@ -27,7 +26,7 @@
   <div id="body" class="wrapper">
     <div id="introduction">
       <h2>Sign up</h2>
-      <form action="insert.php" method="post" class="hform" name="register">
+      <form action="insert.php" method="post" class="hform" name="register" id="register">
         <fieldset>
           <legend>New User Registration</legend>
             First Name: <input type="text" name="first_name" /><br><br>
@@ -45,8 +44,11 @@
         
         <p>
           <input type="submit" name="submit" value="Save" class="button">
-          <button onclick="document.getElementById('register').reset() = ''">Clear</button>
+          <input type="button" onclick="document.getElementById('register').reset()" value="Clear">
         </p>
+      </form>
+      <form action="login.html">
+              <input type="submit" value="Cancel" />
       </form>
       
     </div>

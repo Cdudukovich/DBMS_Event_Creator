@@ -30,7 +30,7 @@ mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".my
 
 
 mysqli_close($con);
-header("location: Registration1.html");
+header("location: login.html");
 
 ?>
 

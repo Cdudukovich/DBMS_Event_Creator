@@ -10,7 +10,9 @@ if (!$conn)
 {
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
+
 $user_level = $_SESSION['level'];
+
 $sql = "SELECT name, category, phone, email from events where type = 1";
 		
 $query = mysqli_query($conn, $sql);
