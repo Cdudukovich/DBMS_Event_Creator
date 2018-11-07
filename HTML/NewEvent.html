@@ -6,6 +6,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Registration</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+  <style type="text/css">
+    #map{ width:700px; height: 500px; }
+  </style>
 </head>
 <body>
 
@@ -17,53 +21,65 @@
   
   <div id="navigation">
     <ul class="tabs">
-      <li><a href="login.html">Home</a></li>
       <li><a href="Events.php">Events</a></li>
       <li><a href="RSO.html">RSO</a></li>
     </ul>
   </div>
   
+
+
   <div id="body" class="wrapper">
-    <div id="introduction">
-      <h2>Create Event</h2>
-      <form action="insertEvent.php" method="post" class="hform" name="register" id="createEvent">
-        <fieldset>
-          <legend>New Event Creation</legend>
-            Name: <input type="text" name="name" /><br><br>
-            Description: <textarea rows="4" cols="50" name="comment" form="createEvent">
-            Category
-            <select name="category">
-              <option name="blank" value="blank"></option>
-              <option name="option1" value="Charity">Charity</option>
-              <option name="option2" value="Religious">Religious</option>
-              <option name="option3" value="Sports">Sports</option>
-              <option name="option3" value="Tech">Technolog</option>
-            </select><br><br>
-            Type
-            <select name="type">
-              <option name="blank" value="blank"></option>
-              <option name="option1" value="1">Public</option>
-              <option name="option2" value="2">Private</option>
-            </select><br><br>
-            Phone: <input type="tel" name="phone" /><br><br>
-      			Email: <input type="date" name="date" /><br><br>
-            Date: <input type="time" name="time" /><br><br>
-        </fieldset>
-        
-        <p>
-          <input type="submit" name="submit" value="Save" class="button">
-          <input type="button" onclick="document.getElementById('createEvent').reset()" value="Clear">
-        </p>
-      </form>
+    <div id="resources">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Create Event</h2>
+            <form action="insertEvent.php" method="post" class="hform" name="register" id="createEvent">
+              <fieldset>
+                <legend>New Event Creation</legend>
+                  Name: <input type="text" name="name" /><br><br>
+                  Description: <textarea rows="4" cols="50" name="comment" form="createEvent">Enter Comment here...</textarea>
+                  Category
+                  <select name="category">
+                    <option name="blank" value="blank"></option>
+                    <option name="option1" value="Charity">Charity</option>
+                    <option name="option2" value="Religious">Religious</option>
+                    <option name="option3" value="Sports">Sports</option>
+                    <option name="option3" value="Tech">Technolog</option>
+                  </select><br><br>
+                  Type
+                  <select name="type">
+                    <option name="blank" value="blank"></option>
+                    <option name="option1" value="1">Public</option>
+                    <option name="option2" value="2">Private</option>
+                  </select><br><br>
+                  Phone: <input type="tel" name="phone" /><br><br>
+                  Email: <input type="email" name="email" /><br><br>
+                  Date: <input type="date" name="date" /><br><br>
+                  Time: <input type="time" name="time" /><br><br>
+                  <input type="text" id="lat" name="lat" readonly="yes"><br>
+                  <input type="text" id="lng" name="long" readonly="yes">
+
+              </fieldset>
+              
+              <p>
+                <input type="submit" name="submit" value="Save" class="button">
+                <input type="button" onclick="document.getElementById('createEvent').reset()" value="Clear">
+              </p>
+            </form>
       <form action="Events.php">
               <input type="submit" value="Cancel" />
       </form>
-      
-    </div>
-    <div id="resources">
+          </div>
+          <div class="col">
+            <h2>Click Location</h2>
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+  <script type="text/javascript" src="map.js"></script>
   <div id="footer">
     <ul class="tabs">
       <li><a href="login.html">Home</a></li>
