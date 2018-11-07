@@ -4,28 +4,29 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Boilerplate</title>
-	<meta name="author" content="Nathan Borror">
+	<title>Events</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
-  <!--[if lte IE 6]><link rel="stylesheet" href="stylesheets/lib/ie6.css" type="text/css" media="screen" charset="utf-8"><![endif]-->
+  <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
+
 </head>
 <body>
-
 <div id="page">
   <div id="header">
-    <h1>Registered Student Organizations</h1>
-        <button class="logout_button" onclick="location.href=logout.php">Logout</button>
+    <h1>Events</h1>  
+          <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
+
   </div>
-  <div class=login>
+
+  
   <div id="navigation">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
       <li><a href="RSO.html">RSO</a></li>
     </ul>
   </div>
-  
-  <div id="body" class="wrapper">
     
+   <?php include("detail_View.php"); ?>
+  </div>
   
   <div id="footer">
     <ul class="tabs">

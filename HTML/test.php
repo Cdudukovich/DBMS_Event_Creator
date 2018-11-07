@@ -11,17 +11,19 @@ if (!$conn)
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
 
-$user_level = $_SESSION['level'];
+$event = $_GET['table'];
 
-$sql = "SELECT name, category, phone, email from events where type = 1";
-		
+$sql = "SELECT * from events where name = '$event'";
+
 $query = mysqli_query($conn, $sql);
 
 if (!$query) 
 {
 	die ('SQL Error: ' . mysqli_error($conn));
 }
+$row = mysqli_fetch_array($query)
 ?>
+
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -31,8 +33,11 @@ if (!$query)
 
 
 </script>
+
+
 <body>
-	<table class="data-table">
+<table class="data-table">
+		<caption class="title">User Events</caption>
 		 <h1 align="center">User Events</h1> 
 		<thead>
 			<tr>
@@ -45,27 +50,15 @@ if (!$query)
 		</thead>
 		<tbody>
 		<?php
-		while ($row = mysqli_fetch_array($query))
-		{
-			$_SESSION['name'] = $row['name'];
 			echo "<tr>
-					<td>".$row['name']."</td>
-					<td>".$row['category']."</td>
-					<td>".$row['phone']."</td>
-					<td>".$row['email']."</td>
-					<td><a href=detail_View_call.php?table=" . urlencode($row['name']) . " >View More</a></td>
+					<p>".$row['name']."</p>
+					<p>".$row['category']."</p>
+					<p>".$row['phone']."</p>
+					<p>".$row['email']."</p>
 				</tr>";
 
-		}?>
+		?>
 		</tbody>
 	</table>
-	<?php
-    if($_SESSION['level'] != 2) {
-    ?>
-        <input type='button' id='forgothide' value='Create New Event' onclick="location.href='NewEvent.html';">
-    <?php
-    }
-?>
 </body>
 </html>
-
