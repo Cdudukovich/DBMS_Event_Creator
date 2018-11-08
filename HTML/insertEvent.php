@@ -2,7 +2,7 @@
 <body>
 
 <?php
-
+session_start();
 $con = mysqli_connect("localhost", "root", "", "event_creator");
 
 if (!$con)

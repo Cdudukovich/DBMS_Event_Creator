@@ -24,7 +24,7 @@ if (!$query)
 	die ('SQL Error: ' . mysqli_error($conn));
 }
 $row = mysqli_fetch_array($query);
-
+$_SESSION['event_id'] = $row['id'];
 //Query the database looking for all the comments and rating for the events 
 $comment_id = $row['id'];
 
@@ -102,5 +102,8 @@ if (!$query2)
 		?>
 		</tbody>
 	</table>
+	<input type='button' id='forgothide' value='Add Comment' onclick="location.href='new_comment.html';"><br>
+	<input type='button' id='forgothide' value='edit Comment' onclick="location.href='new_comment.html';"><br>
+	<input type='button' id='forgothide' value='delete Comment' onclick="location.href='new_comment.html';">
 </body>
 </html>

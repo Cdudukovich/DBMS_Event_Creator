@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Comment page</title>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+  <style type="text/css">
+    #map{ width:700px; height: 500px; }
+  </style>
+</head>
+<body>
+
+<div id="page">
+  <div id="header">
+    <h1>New Comment</h1>  
+          <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
+  </div>
+  
+  <div id="navigation">
+    <ul class="tabs">
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.html">RSO</a></li>
+    </ul>
+  </div>
+  <div id="body" class="wrapper">
+    <div id="resources">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Comment</h2>
+            <form action="new_comment.php" method="post" class="hform" name="comment" id="new_comment">
+              <fieldset>
+                <legend>Add Comment</legend>
+                  Comment: <textarea rows="4" cols="50" name="comment" form="new_comment">Enter Comment here...</textarea>
+                  Rating
+                  <select name="Rating">
+                    <option name="blank" value="blank"></option>
+                    <option name="1" value="1">1</option>
+                    <option name="2" value="2">2</option>
+                    <option name="3" value="3">3</option>
+                    <option name="4" value="4">4</option>
+                    <option name="5" value="5">5</option>
+                  </select><br><br>
+              </fieldset>
+              <p>
+                <input type="submit" name="submit" value="Save" class="button">
+                <input type="button" onclick="document.getElementById('new_comment').reset()" value="Clear">
+              </p>
+            </form>
+      <form action="Events.php">
+              <input type="submit" value="Cancel" />
+      </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <ul class="tabs">
+      <li><a href="login.html">Home</a></li>
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.html">RSO</a></li>
+    </ul>
+    
+  </div>
+</div>
+
+</body>
+</html>
