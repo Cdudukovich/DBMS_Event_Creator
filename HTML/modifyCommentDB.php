@@ -14,15 +14,11 @@ $user_level = $_SESSION['level'];
 $con = mysqli_connect("localhost", "root", "", "event_creator");
 mysqli_select_db($con, "comments");
 
-//$_POST['description']
-
-//$sql = "SELECT comment_text from comments";     
 $sql = "UPDATE comments
-		SET comment_text = '$_POST[description]'
-		WHERE username = '$_SESSION["username"]'
-			AND c_id = $_SESSION["commentID"]";     
+		SET comment_text = '".$_POST['description']."'
+		WHERE username = '".$_SESSION['username']."'
+			AND c_id = '".$_SESSION['commentID']."'";  
 
-// modify database entry
 
 mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 

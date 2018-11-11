@@ -9,15 +9,14 @@ $db_name = 'event_creator'; // Database Name
 $_SESSION["LoggedIn"] = true;
 $_SESSION["Level"] = "admin";
 
-// for testing - delete later
+// testing---delete later------------
 $_SESSION["commentID"] = 12344;
+$_SESSION["username"] = 'JohnSermarini';
+// testing---------------------------
 
-
-$id = $_SESSION["commentID"]; // Need to get from previous page
-
-$query = "SELECT c_id, id, comment_text 
-            FROM users 
-            WHERE c_id = '$id'";
+$query = "SELECT c_id, username, comment_text 
+            FROM comments
+            WHERE c_id = '" . $_SESSION['commentID'] ."'";
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if (!$conn) {
@@ -25,7 +24,7 @@ if (!$conn) {
 }
 
 $result = mysqli_query($conn, $query);
-$count = mysqli_num_rows($result); 
+$count = mysqli_num_rows($result);
 if($count == 0)
 {
     // comment not found
@@ -60,7 +59,6 @@ if($row['username'] != $_SESSION["username"])
   </div>
   
   <h2>Original Description</h2>
-  <? php echo <td>".$row['comment_text']."</td> ?>
   <?php
     echo "<tr>
            <td>".$row['comment_text']." </td>
