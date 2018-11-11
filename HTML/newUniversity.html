@@ -1,0 +1,57 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Registration</title>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<div id="page">
+  <div id="header">
+    <h1>University</h1>
+      <button class="logout_button">Logout</button>
+  </div>
+  
+  <div id="navigation">
+    <ul class="tabs">
+      <li><a href="login.html">Home</a></li>
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.html">RSO</a></li>
+    </ul>
+  </div>
+  
+  <div id="body" class="wrapper">
+    <div id="introduction">
+      <form action="insertUniversity.php" method="post" class="hform" name="register" id="register">
+        <fieldset>
+          <legend>New University Registration</legend>
+            Name: <input type="text" name="name" /><br><br>
+            Description: <textarea rows="4" cols="50" name="description" form="register">Enter Description here...</textarea>
+      		Location: <input type="text" name="location" /><br><br>
+        </fieldset>
+        
+        <p>
+          <input type="submit" name="submit" value="Save" class="button">
+          <input type="button" onclick="document.getElementById('register').reset()" value="Clear">
+        </p>
+      </form>
+      <form action="Events.php">
+              <input type="submit" value="Cancel" />
+      </form>
+      
+    </div>
+    <div id="resources">
+    </div>
+  </div>
+  
+  <div id="footer">
+    <ul class="tabs">
+      <li><a href="login.html">Home</a></li>
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.html">RSO</a></li>
+    </ul>
+    
+  </div>
+</div>
+
+</body>
+</html>

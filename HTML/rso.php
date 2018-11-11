@@ -24,6 +24,7 @@ elseif($_SESSION['search'] == '')
 else
 {
 	$sql = "SELECT name, description from rso where name = '" . $_SESSION['search'] ."'";
+	$_SESSION['search'] = '';
 }
 		
 $query = mysqli_query($conn, $sql);
@@ -59,18 +60,24 @@ if (!$query)
 
     <!-- Create RSOs
     	Available for non students only !-->
-    <form action="createRSO.php" method="post" class="hform" name="createRSO">
-        <fieldset>
-            <legend></legend>
-            Name: <input type="text" name="rsoName" /><br><br>
-            Description: <input type="text" name="rsoDescription" /><br><br>
-        </fieldset>
+	<?php
+	    if($_SESSION['level'] != 0) {
+	    ?>
+	        <form action="insertRSO.php" method="post" class="hform" name="createRSO">
+		        <fieldset>
+		            <legend></legend>
+		            Name: <input type="text" name="rsoName" /><br><br>
+		            Description: <input type="text" name="rsoDescription" /><br><br>
+		        </fieldset>
 
-        <p>
-            <input type="submit" name="submit" value="Submit" class="button">
-            <button onclick="/* set the session variable */">Clear</button>
-        </p>
-    </form>
+		        <p>
+		            <input type="submit" name="submit" value="Submit" class="button">
+		            <button onclick="/* set the session variable */">Clear</button>
+		        </p>
+		    </form>
+	    <?php
+	    }
+	?>
 
     <!-- Display RSOs !-->
 	<table class="data-table">

@@ -21,7 +21,7 @@
   <div id="navigation">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
-      <li><a href="RSO.html">RSO</a></li>
+      <li><a href="RSO.php">RSO</a></li>
     </ul>
   </div>
     
@@ -31,7 +31,7 @@
   <div id="footer">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
-      <li><a href="RSO.html">RSO</a></li>
+      <li><a href="RSO.php">RSO</a></li>
     </ul>
     
     <p class="quiet"><small>Creative Commons License</small></p>

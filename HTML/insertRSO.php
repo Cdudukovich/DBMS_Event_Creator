@@ -16,14 +16,8 @@ $rsoDescription = $_POST['rsoDescription'];
 
 $user_level = $_SESSION['level'];
 
-/*
-$query = "SELECT * FROM users WHERE username = '$myUserName'";
-
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if (!$conn) {
-    die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
-}
-*/
+$con = mysqli_connect("localhost", "root", "", "event_creator");
+mysqli_select_db($con, "rso");
 
 // Students cannot create RSOs
 if($user_level != 0)
