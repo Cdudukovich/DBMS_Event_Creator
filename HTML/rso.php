@@ -34,17 +34,33 @@ if (!$query)
 	die ('SQL Error: ' . mysqli_error($conn));
 }
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 <body>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Boilerplate</title>
-		<meta name="author" content="Nathan Borror">
-	  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
-	  <!--[if lte IE 6]><link rel="stylesheet" href="stylesheets/lib/ie6.css" type="text/css" media="screen" charset="utf-8"><![endif]-->
-	</head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>RSO</title>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
 
+</head>
+	<div id="page">
+  <div id="header">
+    <h1>Events</h1>  
+          <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
+
+  </div>
+
+  
+  <div id="navigation">
+    <ul class="tabs">
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.php">RSO</a></li>
+    </ul>
+  </div>
+  </div>
 	<!-- Search -->
     <form action="search.php" method="post" class="hform" name="searchRSO">
         <fieldset>
@@ -100,5 +116,13 @@ if (!$query)
 		}?>
 		</tbody>
 	</table>
+	<div id="footer">
+    <ul class="tabs">
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.php">RSO</a></li>
+    </ul>
+    
+    <p class="quiet"><small>Creative Commons License</small></p>
+  </div>
 </body>
 </html>
