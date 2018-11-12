@@ -9,12 +9,15 @@ $db_name = 'event_creator'; // Database Name
 $_SESSION["LoggedIn"] = true;
 $_SESSION["Level"] = "admin";
 
-// testing---delete later------------
-$_SESSION["commentID"] = 12344;
-$_SESSION["username"] = 'JohnSermarini';
-// testing---------------------------
+// This stores the name of the table entry that was passed in when this script was called
+$_SESSION["commentID"] = $_GET['table'];
 
-$query = "SELECT c_id, username, comment_text 
+if($_SESSION['commentID'] == "")
+{
+      echo " <script>alert('User had no comment for this event.'); window.location.href='detail_View.php'</script>  ";
+}
+
+$query = "SELECT *
             FROM comments
             WHERE c_id = '" . $_SESSION['commentID'] ."'";
 
@@ -32,12 +35,6 @@ if($count == 0)
 }
 
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-if($row['username'] != $_SESSION["username"])
-{
-    // user is not correct
-    echo " <script>alert('Cannot edit comments you did not make.'); window.location.href='Events.php'</script>  ";
-}
-
 ?>
 
 <html lang="en">

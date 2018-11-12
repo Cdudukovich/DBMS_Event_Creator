@@ -16,9 +16,7 @@ mysqli_select_db($con, "comments");
 
 $sql = "UPDATE comments
 		SET comment_text = '".$_POST['description']."'
-		WHERE username = '".$_SESSION['username']."'
-			AND c_id = '".$_SESSION['commentID']."'";  
-
+		WHERE c_id = '".$_SESSION['commentID']."'";
 
 mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 

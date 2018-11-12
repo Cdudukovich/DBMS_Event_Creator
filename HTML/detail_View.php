@@ -83,19 +83,36 @@ if (!$query2)
 				<th>Rating</th>		
 				<th>Time</th>
 				<th>Comment</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php
 		while ($comment = mysqli_fetch_array($query2) )
 			{
-
-				echo "<tr>
-						<td>".$comment['username']."</td>
-						<td>".$comment['Rating']."</td>
-						<td>".$comment['time']."</td>
-						<td>".$comment['comment_text']."</td>
-					</tr>";
+				if($comment['username'] == $_SESSION['username'])
+				{
+					echo "<tr>
+							<td>".$comment['username']."</td>
+							<td>".$comment['Rating']."</td>
+							<td>".$comment['time']."</td>
+							<td>".$comment['comment_text']."</td>
+							<td><a href=editComment.php?table=" . urlencode($comment['c_id']) . " >Edit</a></td>
+							<td><a href=deleteComment.php?table=" . urlencode($comment['c_id']) . " >Delete</a></td>
+						</tr>";
+				}
+				else
+				{
+					echo "<tr>
+							<td>".$comment['username']."</td>
+							<td>".$comment['Rating']."</td>
+							<td>".$comment['time']."</td>
+							<td>".$comment['comment_text']."</td>
+							<td> </td>
+							<td> </td>
+						</tr>";					
+				}
 
 			}
 		
@@ -103,7 +120,9 @@ if (!$query2)
 		</tbody>
 	</table>
 	<input type='button' id='forgothide' value='Add Comment' onclick="location.href='new_comment.html';"><br>
-	<input type='button' id='forgothide' value='edit Comment' onclick="location.href='new_comment.html';"><br>
+	<!--
+	<input type='button' id='forgothide' value='edit Comment' onclick="location.href='editComment.php';"><br>
 	<input type='button' id='forgothide' value='delete Comment' onclick="location.href='new_comment.html';">
+	!-->
 </body>
 </html>

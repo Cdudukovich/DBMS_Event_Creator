@@ -60,7 +60,7 @@ if (!$query)
 		</tbody>
 	</table>
 	<?php
-    if($_SESSION['level'] != 2) {
+    if($_SESSION['level'] != 0) {
     ?>
         <input type='button' id='forgothide' value='Create New Event' onclick="location.href='NewEvent.html';">
     <?php
