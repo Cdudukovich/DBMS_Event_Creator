@@ -39,8 +39,8 @@ if(mysql_num_rows($query) == 0)
 	<title>Universities</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" charset="utf-8">
-
 </head>
+
 
 <body>
 

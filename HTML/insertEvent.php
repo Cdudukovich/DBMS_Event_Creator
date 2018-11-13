@@ -2,6 +2,7 @@
 <body>
 
 <?php
+include('insertHosts.php');
 session_start();
 $con = mysqli_connect("localhost", "root", "", "event_creator");
 
@@ -37,14 +38,16 @@ if($row['name'] != "") // University does exist
 	('$_POST[name]', '$_POST[comment]', '$_POST[category]', '$_POST[type]', '$_POST[phone]', '$_POST[email]', '$_POST[lat]', '$_POST[long]', '$datetime')";
 
 	mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);	
-
+	
 	$_SESSION['eventName'] = $_POST['name'];
 	$_SESSION['uniName'] = $_POST['universityName'];
-	echo "<script> window.location.href = 'insertHosts.php'</script>";
+	header("insertHosts.php");
+	echo 'alert(message successfully sent)'; 
+	//header("insertHosts.php");
 }
 
 mysqli_close($con);
-header("location: Events.php");
+//header("location: Events.php");
 
 ?>
 
