@@ -22,6 +22,7 @@
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
       <li><a href="RSO.php">RSO</a></li>
+      <li><a href="university.php">Universities</a></li>
     </ul>
   </div>
     

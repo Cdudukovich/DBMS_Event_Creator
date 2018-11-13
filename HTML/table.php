@@ -13,9 +13,23 @@ if (!$conn)
 
 $user_level = $_SESSION['level'];
 
-$sql = "SELECT name, category, phone, email from events where type = 1";
+$sql = "SELECT * 
+		FROM events";
 		
 $query = mysqli_query($conn, $sql);
+
+/*
+// Get Student university affiliation
+$studentHasUni = false;
+$sql2 = "SELECT name
+		FROM aff1
+		WHERE username = '".$_SESSION['username']."'";
+if(mysql_num_rows($sql2) != 0)
+{
+	$studentHasUni = true;
+	$studentUniName = row['name'];
+}
+*/
 
 if (!$query) 
 {
@@ -47,6 +61,29 @@ if (!$query)
 		<?php
 		while ($row = mysqli_fetch_array($query))
 		{
+			/*
+			// Event is private
+			if($row['type'] == 2)
+			{
+				if($studentHasUni)
+				{
+					// TODO
+					if(student uni is same as event uni)
+					{
+						// we good.
+					}
+					else
+					{
+						continue;
+					}
+				}
+				else
+				{
+					continue;
+				}
+			}
+			*/
+
 			$_SESSION['name'] = $row['name'];
 			echo "<tr>
 					<td>".$row['name']."</td>

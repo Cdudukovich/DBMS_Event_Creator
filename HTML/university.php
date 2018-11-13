@@ -12,11 +12,12 @@ if (!$conn)
 }
 
 $user_level = $_SESSION['level'];
-//$_SESSION['univeristyName'] = "UCF";
-$_SESSION['level'] = 2;
+$_SESSION['universityName'] = "UCF";
 
 // Add error check to determine if database is empty
-$sql = "SELECT name, description, location, student_num from university where name = '" . $_SESSION['universityName'] ."'";
+$sql = "SELECT *
+		FROM university";
+
 $query = mysqli_query($conn, $sql);
 if (!$query) 
 {
@@ -28,9 +29,6 @@ if(mysql_num_rows($query) == 0)
 	// Send back to previous page, there is no university by this name.
 }
 */
-
-// Get info from query.
-$row = mysqli_fetch_array($query)
 ?>
 
 <html lang="en">
@@ -62,17 +60,23 @@ $row = mysqli_fetch_array($query)
 				<th>Name</th>
 				<th>Description</th>		
 				<th>Location</th>
-				<th>Owner ID</th>
+				<th>Number of Students</th>
+				<th>Join</th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php
-			echo "<tr>
-					<td>".$row['name']."</td>
-					<td>".$row['description']."</td>
-					<td>".$row['location']."</td>
-					<td>".$row['student_num']."</td>
-				</tr>";
+			while ($row = mysqli_fetch_array($query))
+			{
+				echo "<tr>
+						<td>".$row['name']."</td>
+						<td>".$row['description']."</td>
+						<td>".$row['location']."</td>
+						<td>".$row['student_num']."</td>
+						<td><a href=joinUniversity.php?table=" . urlencode($row['name']) . " >Join</a></td>
+					</tr>";
+
+			}
 		?>
 		</tbody>
 

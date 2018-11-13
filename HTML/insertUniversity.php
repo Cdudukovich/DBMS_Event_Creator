@@ -20,7 +20,7 @@ mysqli_select_db($con, "events");
 
 $sql="INSERT INTO university (name, description, location, student_num)
 VALUES
-('$_POST[name]', '$_POST[description]', '$_POST[location]', 11111)";
+('$_POST[name]', '$_POST[description]', '$_POST[location]', '$_POST[numStudents]')";
 
 mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 
