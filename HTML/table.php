@@ -14,12 +14,14 @@ if (!$conn)
 $user_level = $_SESSION['level'];
 
 $sql = "SELECT * 
-		FROM events, aff1
-		WHERE events.type = 1 OR events.
-		
+		FROM events
+		WHERE events.type = 1 OR ( 
+		events.id in (SELECT id 
+		FROM hosts
+		WHERE name in 
 		(SELECT name 
 		FROM aff1
-		WHERE aff1.username = '$_SESSION[username]')";
+		WHERE username = '$_SESSION[username]')) and events.type = 2)";
 		
 $query = mysqli_query($conn, $sql);
 
