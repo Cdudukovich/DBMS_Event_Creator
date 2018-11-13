@@ -12,12 +12,11 @@
 <body>
 <div id="page">
   <div id="header">
+    <!-- Calls the logout button to end the session -->
     <h1>Events</h1>  
           <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
-
   </div>
 
-  
   <div id="navigation">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>

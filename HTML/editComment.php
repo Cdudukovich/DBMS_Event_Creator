@@ -17,6 +17,7 @@ if($_SESSION['commentID'] == "")
       echo " <script>alert('User had no comment for this event.'); window.location.href='detail_View.php'</script>  ";
 }
 
+// Grabs all of the information for comments that match that comment id
 $query = "SELECT *
             FROM comments
             WHERE c_id = '" . $_SESSION['commentID'] ."'";
@@ -70,6 +71,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   <div id="body" class="wrapper">
     <div id="introduction">
       <h2>Edit Comment</h2>
+
+      <!-- Keeps track and calls a modify script to edit comments -->
       <form action="modifyCommentDB.php" method="post" class="hform" name="mod" id="mod">
         <fieldset>
           <legend></legend>
@@ -81,11 +84,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           <input type="button" onclick="document.getElementById('signon').reset()" value="Clear">
         </p>
       </form>
-      <!--
-      <form action="Registration1.html">
-              <input type="submit" value="Register" />
-      </form>
-      !-->
       
     </div>
     <div id="resources">

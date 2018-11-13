@@ -50,6 +50,7 @@ if (!$query2)
 
 
 <body>
+<!-- Creates the header column title for the table  -->
 <table class="data-table">
 		 <h1 align="center"><?php echo $row['name']?></h1> 
 		<tbody>
@@ -89,8 +90,10 @@ if (!$query2)
 		</thead>
 		<tbody>
 		<?php
+		// As long as there are comments for that event, iterate 
 		while ($comment = mysqli_fetch_array($query2) )
-			{
+			{	
+				// iF comment was made by user allow them ot delete or edit the comment 
 				if($comment['username'] == $_SESSION['username'])
 				{
 					echo "<tr>
@@ -103,7 +106,7 @@ if (!$query2)
 						</tr>";
 				}
 				else
-				{
+				{	
 					echo "<tr>
 							<td>".$comment['username']."</td>
 							<td>".$comment['Rating']."</td>
@@ -120,9 +123,5 @@ if (!$query2)
 		</tbody>
 	</table>
 	<input type='button' id='forgothide' value='Add Comment' onclick="location.href='new_comment.html';"><br>
-	<!--
-	<input type='button' id='forgothide' value='edit Comment' onclick="location.href='editComment.php';"><br>
-	<input type='button' id='forgothide' value='delete Comment' onclick="location.href='new_comment.html';">
-	!-->
 </body>
 </html>

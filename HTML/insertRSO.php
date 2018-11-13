@@ -12,7 +12,6 @@ $_SESSION["Level"] = "admin";
 $rsoName = $_POST['rsoName'];
 $rsoDescription = $_POST['rsoDescription'];
 
-//$_SESSION["username"] = $myUserName;
 
 $user_level = $_SESSION['level'];
 
@@ -27,7 +26,7 @@ if($user_level != 0)
     $sql="INSERT INTO rso (name, description)
     VALUES
     ('$_POST[rsoName]', '$_POST[rsoDescription]')";
-
+    
     $username = $_SESSION['username'];
     $rsoName = $_POST['rsoName'];
     $sql2 = "INSERT INTO aff2 (username, name, type)

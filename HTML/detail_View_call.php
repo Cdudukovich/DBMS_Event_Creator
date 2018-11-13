@@ -24,7 +24,7 @@
       <li><a href="RSO.html">RSO</a></li>
     </ul>
   </div>
-    
+     <!-- This is where the magic happens, Displays all the details of the individual event -->
    <?php include("detail_View.php"); ?>
   </div>
   

@@ -13,6 +13,7 @@ if (!$conn)
 $unisql = "SELECT *
 			 FROM events
 			 WHERE name = '".$_SESSION['eventName']."'";
+			 
 $query = mysqli_query($conn, $unisql);
 if(!$query) 
 {

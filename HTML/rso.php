@@ -48,7 +48,7 @@ if (!$query)
     </head>
 	<div id="page">
   <div id="header">
-    <h1>Events</h1>  
+    <h1>RSO</h1>  
           <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
 
   </div>

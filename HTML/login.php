@@ -24,17 +24,22 @@ if (!$conn) {
 $sql = "SELECT username, first_name, level from users";     
 $result1 = mysqli_query($conn, $query);
 $count1 = mysqli_num_rows($result1); 
+
+// If there are no users then dont verify
 if($count1 == 1)
 {
+    // Checks for username matches in the db
     $query2 = "SELECT password, level FROM users WHERE username='$myUserName'";
 
     $result2 = mysqli_query($conn, $query2);
+    // Grabs the array of query results 
     $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
     $hash = $row['password'];
+
+    // Verifies encrypted password
     if ( password_verify( "$myPassword", $hash ) ) 
         {
             $_SESSION["level"] = $row['level'];
-            #$_SESSION['user_id'] = $user->ID;
             echo " <script> window.location.href='events.php'</script>";
         }
         else
