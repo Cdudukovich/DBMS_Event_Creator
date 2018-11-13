@@ -19,7 +19,7 @@ if(!$query)
 	die ('SQL Error: ' . mysqli_error($conn));
 }
 $row = mysqli_fetch_array($query);
-$eventID = (int)$row['id'];
+$eventID = (int)$row['id'] + 1;
 $uniName = $_SESSION['uniName'];
 
 // Create new affiliation
@@ -31,7 +31,7 @@ if (!$query2)
 {
 	die ('SQL Error: ' . mysqli_error($conn));
 }
-//header("location: Events.php");
+header("location: Events.php");
 
 //echo "<script> window.location.href = 'Events.php'</script>";
 

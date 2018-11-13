@@ -58,6 +58,7 @@ if (!$query)
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
       <li><a href="RSO.php">RSO</a></li>
+      <li><a href="university.php">Universities</a></li>
     </ul>
   </div>
   </div>
@@ -71,7 +72,7 @@ if (!$query)
 
         <p>
             <input type="submit" name="submit" value="Submit" class="button">
-            <button onclick="/* set the session variable */">Clear</button>
+            <input type="button" onclick="document.getElementById('searchRSO').reset()" value="Clear">
         </p>
     </form>
 
@@ -114,7 +115,7 @@ if (!$query)
 			echo "<tr>
 					<td>".$row['name']."</td>
 					<td>".$row['description']."</td>
-					<td><a href=joinRSO.php?table=" . urlencode($row['name']) . " >View More</a></td>
+					<td><a href=joinRSO.php?table=" . urlencode($row['name']) . " >Join</a></td>
 				</tr>";
 
 		}?>

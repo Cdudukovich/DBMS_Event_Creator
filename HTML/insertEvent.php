@@ -42,12 +42,10 @@ if($row['name'] != "") // University does exist
 	$_SESSION['eventName'] = $_POST['name'];
 	$_SESSION['uniName'] = $_POST['universityName'];
 	header("insertHosts.php");
-	echo 'alert(message successfully sent)'; 
-	//header("insertHosts.php");
 }
 
 mysqli_close($con);
-//header("location: Events.php");
+header("location: Events.php");
 
 ?>
 

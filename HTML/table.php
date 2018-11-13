@@ -13,7 +13,9 @@ if (!$conn)
 
 $user_level = $_SESSION['level'];
 
-$sql = "SELECT * 
+if(!isset($_SESSION['search']))
+{
+	$sql = "SELECT * 
 		FROM events
 		WHERE events.type = 1 OR ( 
 		events.id in (SELECT id 
@@ -22,6 +24,26 @@ $sql = "SELECT *
 		(SELECT name 
 		FROM aff1
 		WHERE username = '$_SESSION[username]')) and events.type = 2)";
+}
+elseif($_SESSION['search'] == '')
+{
+	$sql = "SELECT * 
+		FROM events
+		WHERE events.type = 1 OR ( 
+		events.id in (SELECT id 
+		FROM hosts
+		WHERE name in 
+		(SELECT name 
+		FROM aff1
+		WHERE username = '$_SESSION[username]')) and events.type = 2)";
+}
+else
+{
+	$sql = "SELECT * from events where name = '" . $_SESSION['search'] ."'";
+	$_SESSION['search'] = '';
+}
+
+
 		
 $query = mysqli_query($conn, $sql);
 
@@ -53,6 +75,18 @@ if (!$query)
 
 </script>
 <body>
+	<form action="EventSearch.php" method="post" class="hform" name="searchEvent">
+        <fieldset>
+            <legend></legend>
+            Search: <input type="text" name="searchVal" /><br><br>
+        </fieldset>
+
+        <p>
+            <input type="submit" name="submit" value="Submit" class="button">
+            <input type="button" onclick="document.getElementById('searchEvent').reset()" value="Clear">
+        </p>
+        <input type="submit" name="submit" value="Reset" class="button">
+    </form>
 	<table class="data-table">
 		 <h1 align="center">User Events</h1> 
 		<thead>
