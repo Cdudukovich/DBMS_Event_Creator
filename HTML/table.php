@@ -13,6 +13,8 @@ if (!$conn)
 
 $user_level = $_SESSION['level'];
 
+// No search terms
+// Bring up only allowed events
 if(!isset($_SESSION['search']))
 {
 	$sql = "SELECT * 
@@ -25,6 +27,8 @@ if(!isset($_SESSION['search']))
 		FROM aff1
 		WHERE username = '$_SESSION[username]')) and events.type = 2)";
 }
+// No search terms
+// Bring up only allowed events
 elseif($_SESSION['search'] == '')
 {
 	$sql = "SELECT * 
@@ -37,28 +41,14 @@ elseif($_SESSION['search'] == '')
 		FROM aff1
 		WHERE username = '$_SESSION[username]')) and events.type = 2)";
 }
+// Bring up the searched event.
 else
 {
 	$sql = "SELECT * from events where name = '" . $_SESSION['search'] ."'";
 	$_SESSION['search'] = '';
 }
-
-
 		
 $query = mysqli_query($conn, $sql);
-
-/*
-// Get Student university affiliation
-$studentHasUni = false;
-$sql2 = "SELECT name
-		FROM aff1
-		WHERE username = '".$_SESSION['username']."'";
-if(mysql_num_rows($sql2) != 0)
-{
-	$studentHasUni = true;
-	$studentUniName = row['name'];
-}
-*/
 
 if (!$query) 
 {
