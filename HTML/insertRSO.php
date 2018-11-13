@@ -28,6 +28,12 @@ if($user_level != 0)
     VALUES
     ('$_POST[rsoName]', '$_POST[rsoDescription]')";
 
+    $username = $_SESSION['username'];
+    $rsoName = $_POST['rsoName'];
+    $sql2 = "INSERT INTO aff2 (username, name, type)
+			VALUES ('$username', '$rsoName', 1)";
+	$query2 = mysqli_query($con, $sql2);
+
     mysqli_query($con, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 }
 else

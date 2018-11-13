@@ -38,20 +38,25 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
 
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Registration</title>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Edit Comment</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
-</head>
+  <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
+
+  </head>
+<body>
 
 <div id="page">
+  <div id="page">
   <div id="header">
-    <h1>User Login</h1>
-  </div>
+    <h1>Edit Comment</h1>  
+          <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
   
   <div id="navigation">
     <ul class="tabs">
-      <li> </li>
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.php">RSO</a></li>
     </ul>
   </div>
   
@@ -89,7 +94,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   
   <div id="footer">
     <ul class="tabs">
-      <li></li>
+      <li><a href="Events.php">Events</a></li>
+      <li><a href="RSO.php">RSO</a></li>
     </ul>
     
   </div>
@@ -97,7 +103,3 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 </body>
 </html>
-
-
-
-?>
