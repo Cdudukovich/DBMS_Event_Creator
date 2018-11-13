@@ -14,10 +14,10 @@ if (!$conn)
 $unisql = "SELECT *
 			 FROM university
 			 WHERE name = '".$_SESSION['eventName']."'";
-$query = mysqli_query($con, $unisql);
+$query = mysqli_query($conn, $unisql);
 if(!$query) 
 {
-	die ('SQL Error: ' . mysqli_error($con));
+	die ('SQL Error: ' . mysqli_error($conn));
 }
 $row = mysqli_fetch_array($query);
 $eventID = (int)$row['id'];

@@ -45,7 +45,7 @@ if (!$query)
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" media="screen" charset="utf-8">
 
-</head>
+    </head>
 	<div id="page">
   <div id="header">
     <h1>Events</h1>  
@@ -62,6 +62,7 @@ if (!$query)
   </div>
   </div>
 	<!-- Search -->
+	<h3>Search RSOs</h3>
     <form action="search.php" method="post" class="hform" name="searchRSO">
         <fieldset>
             <legend></legend>
@@ -79,6 +80,7 @@ if (!$query)
 	<?php
 	    if($_SESSION['level'] != 0) {
 	    ?>
+	    	<h3>Create RSO</h3>
 	        <form action="insertRSO.php" method="post" class="hform" name="createRSO">
 		        <fieldset>
 		            <legend></legend>
@@ -101,17 +103,19 @@ if (!$query)
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Description</th>		
+				<th>Description</th>
+				<th>Join</th>		
 			</tr>
 		</thead>
 		<tbody>
 		<?php
 		while ($row = mysqli_fetch_array($query))
 		{
-			echo '<tr>
-					<td>'.$row['name'].'</td>
-					<td>'.$row['description'].'</td>
-				</tr>';
+			echo "<tr>
+					<td>".$row['name']."</td>
+					<td>".$row['description']."</td>
+					<td><a href=joinRSO.php?table=" . urlencode($row['name']) . " >View More</a></td>
+				</tr>";
 
 		}?>
 		</tbody>

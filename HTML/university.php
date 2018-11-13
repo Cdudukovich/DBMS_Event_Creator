@@ -31,11 +31,15 @@ if(mysql_num_rows($query) == 0)
 */
 ?>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Registration</title>
+	<title>Universities</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" charset="utf-8">
+
 </head>
 
 <body>
@@ -43,14 +47,14 @@ if(mysql_num_rows($query) == 0)
 <div id="page">
   <div id="header">
     <h1>University</h1>
-      <button class="logout_button">Logout</button>
+       <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
   </div>
   
   <div id="navigation">
     <ul class="tabs">
       <li><a href="login.html">Home</a></li>
       <li><a href="Events.php">Events</a></li>
-      <li><a href="RSO.html">RSO</a></li>
+      <li><a href="RSO.php">RSO</a></li>
     </ul>
   </div>
 	<table class="data-table">
@@ -94,6 +98,8 @@ if(mysql_num_rows($query) == 0)
     </div>
   </div>
 
-</div>
+</div>    
+    <!--<p class="quiet"><small>Creative Commons License</small></p>!-->
+
 
 </body>

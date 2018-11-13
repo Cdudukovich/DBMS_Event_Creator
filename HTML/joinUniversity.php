@@ -14,7 +14,7 @@ if (!$conn)
 
 $username = $_SESSION['username'];
 $uniName = $_GET['table'];
-
+$_SESSION['uniName'] = $uniName;
 
 // Delete old affiliation
 $sql1 = "DELETE
