@@ -23,12 +23,7 @@ if (!$query)
 {
 	die ('SQL Error: ' . mysqli_error($conn));
 }
-/*
-if(mysql_num_rows($query) == 0)
-{
-	// Send back to previous page, there is no university by this name.
-}
-*/
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
