@@ -36,6 +36,8 @@ if(mysql_num_rows($query) == 0)
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Registration</title>
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" charset="utf-8">
+  
 </head>
 
 <body>

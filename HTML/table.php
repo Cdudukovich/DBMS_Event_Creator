@@ -14,7 +14,12 @@ if (!$conn)
 $user_level = $_SESSION['level'];
 
 $sql = "SELECT * 
-		FROM events";
+		FROM events, aff1
+		WHERE events.type = 1 OR events.
+		
+		(SELECT name 
+		FROM aff1
+		WHERE aff1.username = '$_SESSION[username]')";
 		
 $query = mysqli_query($conn, $sql);
 

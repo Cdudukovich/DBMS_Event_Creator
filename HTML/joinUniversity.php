@@ -11,10 +11,9 @@ if (!$conn)
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
 
-
 $username = $_SESSION['username'];
 $uniName = $_GET['table'];
-
+$_SESSION['uniName'] = $uniName;
 
 // Delete old affiliation
 $sql1 = "DELETE
