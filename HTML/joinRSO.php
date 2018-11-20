@@ -19,10 +19,11 @@ $rsoName = $_GET['table'];
 $sql1 = "SELECT *
         FROM aff2
         WHERE username = '".$_SESSION['username']."'";
+
 $query1 = mysqli_query($conn, $sql1);
 $rowcount = mysqli_num_rows($query1);
 
-if($rowcount === 0) //The user is not already in the RSO
+if($rowcount == 0) //The user is not already in the RSO
 {
 	// Create new affiliation
 	$sql2 = "INSERT INTO aff2 (username, name, type)

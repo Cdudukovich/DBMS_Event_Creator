@@ -12,16 +12,16 @@
 <body>
 <div id="page">
   <div id="header">
+    <!-- Calls the logout button to end the session -->
     <h1>Events</h1>  
           <input class="logout_button" type="button" onclick="location.href='logout.php';" value="Logout" />
-
   </div>
 
-  
   <div id="navigation">
     <ul class="tabs">
       <li><a href="Events.php">Events</a></li>
-      <li><a href="RSO.html">RSO</a></li>
+      <li><a href="RSO.php">RSO</a></li>
+      <li><a href="university.php">Universities</a></li>
     </ul>
   </div>
      <!-- This is where the magic happens, Displays all the details of the individual event -->

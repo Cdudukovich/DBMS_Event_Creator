@@ -56,8 +56,9 @@ if (!$query2)
 		<tbody>
 			<input class="logout_button" type="button" onclick="location.href='Events.php';" value="Back" style="position: relative; left: 1%; top: 50%;">
 		<?php
-			echo "<tr>
-					<p><th><strong>Name</strong></th><th>".$row['name']."</p></th>
+			echo "
+				  <tr>
+					<p><td><strong>Name</strong></td><td>".$row['name']."</p></td>
 				  </tr>
 				  <tr>
 					<p><td><strong>Category</strong></td><td>".$row['category']."</p></td>
@@ -69,6 +70,12 @@ if (!$query2)
 				  </tr>
 				  <tr>
 					<p><td><strong>Description</strong></td><td>".$row['description']."</p></td>
+				  </tr>
+				  <tr>
+					<p><td><strong>Latitude</strong></td><td>".$row['lat']."</p></td>
+				  </tr>
+				  <tr>
+					<p><td><strong>Longitude</strong></td><td>".$row['log']."</p></td>
 				  </tr>
 				";
 

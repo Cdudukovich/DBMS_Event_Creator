@@ -12,48 +12,34 @@ if (!$conn)
 }
 
 $user_level = $_SESSION['level'];
+$_SESSION['universityName'] = "UCF";
 
-// No search terms
-// Bring up only allowed events
-if(!isset($_SESSION['search']))
+// Add error check to determine if database is empty
+
+if(!isset($_SESSION['search']) )
 {
-	$sql = "SELECT * 
-		FROM events
-		WHERE events.type = 1 OR ( 
-		events.id in (SELECT id 
-		FROM hosts
-		WHERE name in 
-		(SELECT name 
-		FROM aff1
-		WHERE username = '$_SESSION[username]')) and events.type = 2)";
+	$sql = "SELECT *
+		FROM university";
 }
-// No search terms
-// Bring up only allowed events
-elseif($_SESSION['search'] == '')
+elseif(($_SESSION['search'] == ''))
 {
-	$sql = "SELECT * 
-		FROM events
-		WHERE events.type = 1 OR ( 
-		events.id in (SELECT id 
-		FROM hosts
-		WHERE name in 
-		(SELECT name 
-		FROM aff1
-		WHERE username = '$_SESSION[username]')) and events.type = 2)";
+$sql = "SELECT *
+		FROM university";
 }
-// Bring up the searched event.
 else
 {
-	$sql = "SELECT * from events where name = '" . $_SESSION['search'] ."'";
+		$sql = "SELECT * from university where name = '" . $_SESSION['search'] ."'";
 	$_SESSION['search'] = '';
 }
-		
-$query = mysqli_query($conn, $sql);
 
+
+
+$query = mysqli_query($conn, $sql);
 if (!$query) 
 {
 	die ('SQL Error: ' . mysqli_error($conn));
 }
+
 ?>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -65,7 +51,7 @@ if (!$query)
 
 </script>
 <body>
-	<form action="EventSearch.php" method="post" class="hform" name="searchEvent">
+	<form action="univSearch.php" method="post" class="hform" name="searchEvent">
         <fieldset>
             <legend></legend>
             Search: <input type="text" name="searchVal" /><br><br>
@@ -76,42 +62,51 @@ if (!$query)
             <input type="button" onclick="document.getElementById('searchEvent').reset()" value="Clear">
         </p>
         <input type="submit" name="submit" value="Reset" class="button">
-    </form>
-	<table class="data-table">
-		 <h1 align="center">User Events</h1> 
+    <table class="data-table">
+		 <h1 align="center">University</h1> 
 		<thead>
 			<tr>
-				<th>Event Name</th>
-				<th>Category</th>		
-				<th>Phone Number</th>
-				<th>Email</th>
-				<th>View</th>
+				<th>Name</th>
+				<th>Description</th>		
+				<th>Location</th>
+				<th>Number of Students</th>
+				<th>Join</th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php
-		while ($row = mysqli_fetch_array($query))
-		{
+			while ($row = mysqli_fetch_array($query))
+			{
+				echo "<tr>
+						<td>".$row['name']."</td>
+						<td>".$row['description']."</td>
+						<td>".$row['location']."</td>
+						<td>".$row['student_num']."</td>
+						<td><a href=joinUniversity.php?table=" . urlencode($row['name']) . " >Join</a></td>
+					</tr>";
 
-			$_SESSION['name'] = $row['name'];
-			echo "<tr>
-					<td>".$row['name']."</td>
-					<td>".$row['category']."</td>
-					<td>".$row['phone']."</td>
-					<td>".$row['email']."</td>
-					<td><a href=detail_View_call.php?table=" . urlencode($row['name']) . " >View More</a></td>
-				</tr>";
-
-		}?>
+			}
+		?>
 		</tbody>
-	</table>
-	<?php
-    if($_SESSION['level'] != 0) {
-    ?>
-        <input type='button' id='forgothide' value='Create New Event' onclick="location.href='NewEvent.html';">
-    <?php
-    }
-?>
+
+		<?php
+		    if($_SESSION['level'] == 2) {
+		    ?>
+		        <input type='button' id='forgothide' value='Create New University' onclick="location.href='newUniversity.html';">
+		    <?php
+		    }
+		?>
+      </form>
+      
+    </div>
+    <div id="resources">
+    </div>
+  </div>
+
+</div>    
+    <!--<p class="quiet"><small>Creative Commons License</small></p>!-->
+
+
 </body>
 </html>
 
