@@ -58,9 +58,6 @@ if (!$query2)
 		<?php
 			echo "
 				  <tr>
-					<p><td><strong>Name</strong></td><td>".$row['name']."</p></td>
-				  </tr>
-				  <tr>
 					<p><td><strong>Category</strong></td><td>".$row['category']."</p></td>
 				  <tr>
 					<p><td><strong>Email</strong></td><td>".$row['email']."</p></td>
@@ -76,6 +73,9 @@ if (!$query2)
 				  </tr>
 				  <tr>
 					<p><td><strong>Longitude</strong></td><td>".$row['log']."</p></td>
+				  </tr>
+				  <tr>
+					<p><td><strong>Date and Time</strong></td><td>".$row['event_datetime']."</p></td>
 				  </tr>
 				";
 

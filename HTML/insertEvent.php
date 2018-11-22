@@ -37,16 +37,15 @@ if($row['name'] != "") // University does exist
 	$datetime = date('Y-m-d H:i:s',$datetime);
 
 	// Checks if there are events at that same time and location
-	$sql = "SELECT * 
+	$sql = "SELECT COUNT(*) 
 			FROM events
 			WHERE lat = '$_POST[lat]' AND log = '$_POST[long]' AND event_datetime = '$datetime'";
 	$query = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($query);
-	if($row['name'] == "")
+	if($query > 1)
 	{
-		echo " <script>alert('Event location/time already occupied.'); window.location.href='Events.php'</script>  ";
+		echo "<script type='text/javascript'>alert(\"There is already an event at location '$_POST[lat]' $_POST[long] at '$datetime'\");</script>";
 	}
-
 
 	$sql="INSERT INTO events (name, description, category, type, phone, email, lat, log, event_datetime)
 	VALUES
