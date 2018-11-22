@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 11, 2018 at 11:32 PM
+-- Generation Time: Nov 22, 2018 at 04:34 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -41,8 +41,11 @@ CREATE TABLE IF NOT EXISTS `aff1` (
 --
 
 INSERT INTO `aff1` (`name`, `username`) VALUES
+('Georgia Tech', 'thanks'),
 ('University of Central Florida', 'cdudukovich1'),
-('University of Central Florida', 'thanks33');
+('University of Central Florida', 'thanks33'),
+('University of Florida', 'cduke'),
+('University of Miami', 'tuser');
 
 -- --------------------------------------------------------
 
@@ -64,7 +67,9 @@ CREATE TABLE IF NOT EXISTS `aff2` (
 --
 
 INSERT INTO `aff2` (`username`, `name`, `type`) VALUES
-('cdudukovich1', 'FuckThisShitCLub', 2);
+('cduke', 'DB demo', 2),
+('thanks', 'Cereal dudes', 2),
+('tuser', 'Robotics at UCF ', 2);
 
 -- --------------------------------------------------------
 
@@ -83,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   PRIMARY KEY (`c_id`,`event_id`),
   KEY `event` (`event_id`),
   KEY `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Table that tracks comments ';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Table that tracks comments ';
 
 --
 -- Dumping data for table `comments`
@@ -91,8 +96,11 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 INSERT INTO `comments` (`c_id`, `event_id`, `comment_text`, `Rating`, `time`, `username`) VALUES
 (3, 3, 'Bilbo sucks!', 3, '2018-11-08 08:00:14.000000', 'cdudukovich'),
-(3, 5, 'FUCK THIS DAMN PROJECT MAN', 1, '2018-11-09 08:19:59.203304', 'thanks'),
-(4, 1, 'FUCKK!', 2, '2018-11-08 03:57:50.626831', 'thanks');
+(3, 5, 'Great project! ', 1, '2018-11-09 08:19:59.203304', 'thanks'),
+(5, 1, 'Cool beans dog', 4, '2018-11-12 23:54:31.543002', 'thanks'),
+(7, 8, 'Sweet!', 4, '2018-11-13 03:11:45.040657', 'cduke'),
+(9, 30, 'Super nice comment.', 3, '2018-11-13 18:32:18.656204', 'thanks'),
+(10, 30, 'I really enjoyed this event!', 3, '2018-11-13 18:32:46.680880', 'cduke');
 
 -- --------------------------------------------------------
 
@@ -129,20 +137,23 @@ CREATE TABLE IF NOT EXISTS `events` (
   `log` decimal(10,8) NOT NULL COMMENT 'Longitude',
   `event_datetime` datetime(6) DEFAULT NULL COMMENT 'The time the event takes place',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='events ';
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='events ';
 
 --
 -- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `name`, `description`, `category`, `type`, `phone`, `email`, `lat`, `log`, `event_datetime`) VALUES
-(1, 'Thrift Store Dudes', 'This is an event based on a charity thrift store', 'Charity', 1, '407-267-6149', 'charity@charity.com', '0.00000000', '0.00000000', NULL),
-(2, 'Cool Pups', 'This is an rescue shelter adoption event', 'Charity', 2, '407-267-4149', 'rando@petrescuebyjudy.com', '0.00000000', '0.00000000', NULL),
-(3, 'Bilbo\'s Haunted house', 'This is an event created by bilbo the pibble', 'Outreach', 2, '407-267-3432', 'bilbo@baggins.com', '0.00000000', '0.00000000', NULL),
-(4, 'Jim and John\'s rage quit', 'Join jim and John as they give up on DBMS with Kahn Vu', 'charity', 1, '407-761-5399', 'pleasekillme@gmail.com', '0.00000000', '0.00000000', NULL),
-(5, 'Computer Repair', 'Free Computer destructio uhh I mean repair', 'charity', 1, '407-761-53434', 'breakshit@gmail.com', '0.00000000', '0.00000000', NULL),
-(6, 'Thisisatest', 'SUP BITCHES', 'Religious', 2, '407-561-7777', 'csdf@gdgskf.com', '28.54373564', '-81.74247885', '2018-11-29 03:01:00.000000'),
-(7, 'test', 'fsdfasdfEnter Comment here...', 'blank', 1, '407754546', 'bals@gmabl.com', '27.47682287', '-81.48979331', '2018-10-31 16:04:00.000000');
+(28, 'Bilbo Baggin Adventure', 'Lets go on an adventure with Gandalf! ', 'Charity', 2, '407-761-5639', 'biblo.baggins@gmail.com', '78.08795000', '-72.15138000', '2018-11-21 00:14:12.023078'),
+(30, 'LAN PARTY', 'Super awesome Lan party', 'Tech', 1, '4077777777', 'LAN@lan.com', '28.61127075', '-81.24809409', '2018-12-14 01:29:00.000000'),
+(31, 'Guitar Party', 'Come Play guitar with us', 'Religious', 1, '40786177777', 'guitars@yahoo.com', '29.05399032', '-81.51176596', '2019-12-14 01:33:00.000000'),
+(32, 'Drum Circl', 'Come bang on some drums', 'Religious', 1, '407-561-7777', 'cjpeanutbutter@yahoo.com', '28.83286593', '-81.45683432', '2017-10-12 11:35:00.000000'),
+(33, 'Demo Time', 'Demonstrate your web app', 'Tech', 1, '407-561-7777', 'cjpeanutbutter@yahoo.com', '29.10199832', '-81.67656089', '2017-10-12 11:36:00.000000'),
+(34, 'Cereal eating party', 'Come eat cereal and forget about your sadness', 'Charity', 1, '40786177777', 'cjpeanutbutter@yahoo.com', '28.81361544', '-81.56669760', '2017-10-12 11:38:00.000000'),
+(35, 'Pity Party', '*Tears*', 'Charity', 2, '407-561-7777', 'mcbeans@afd.com', '29.00595996', '-81.77543784', '2017-07-12 11:39:00.000000'),
+(36, 'Build robots', 'BUILD SOME ROBOTS', 'Tech', 3, '40786177777', 'ballsmcballs@balls.com', '29.06359371', '-81.81938315', '2017-09-12 11:49:00.000000'),
+(37, 'Demo ', 'Demoing DB', 'Tech', 1, '4077777777', 'dude@gmail.com', '28.92906495', '-81.52275229', '2018-11-16 14:02:00.000000'),
+(38, 'stuff', 'bsdfEnter Comment here...', 'Charity', 1, '40775445', 'balls@balls.com', '28.60245801', '-81.20012283', '2017-10-20 03:22:00.000000');
 
 -- --------------------------------------------------------
 
@@ -154,7 +165,7 @@ DROP TABLE IF EXISTS `hosts`;
 CREATE TABLE IF NOT EXISTS `hosts` (
   `id` int(50) NOT NULL COMMENT 'event ID',
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of University',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`name`),
   KEY `college_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='relationship between event and university';
 
@@ -163,8 +174,22 @@ CREATE TABLE IF NOT EXISTS `hosts` (
 --
 
 INSERT INTO `hosts` (`id`, `name`) VALUES
+(1, ''),
+(43, 'Georgia Tech'),
+(47, 'Georgia Tech'),
 (3, 'University of Central Florida'),
-(4, 'University of Central Florida');
+(4, 'University of Central Florida'),
+(30, 'University of Central Florida'),
+(34, 'University of Central Florida'),
+(35, 'University of Central Florida'),
+(38, 'University of Central Florida'),
+(39, 'University of Central Florida'),
+(40, 'University of Central Florida'),
+(41, 'University of Central Florida'),
+(31, 'University of Florida'),
+(33, 'University of Florida'),
+(36, 'University of Florida'),
+(44, 'University of Florida');
 
 -- --------------------------------------------------------
 
@@ -184,7 +209,9 @@ CREATE TABLE IF NOT EXISTS `rso` (
 --
 
 INSERT INTO `rso` (`name`, `description`) VALUES
-('FuckThisShitCLub', 'Join this club if you are done with this shit ');
+('Cereal dudes', 'Eat as much cereal as possible'),
+('DB demo', 'Good demo'),
+('Robotics at UCF ', 'Build cool stuff ');
 
 -- --------------------------------------------------------
 
@@ -206,7 +233,11 @@ CREATE TABLE IF NOT EXISTS `university` (
 --
 
 INSERT INTO `university` (`name`, `description`, `location`, `student_num`) VALUES
-('University of Central Florida', 'The largest school in the country and also a school that specializes it shitty professors', 'Orlando', 65000);
+('Georgia Tech', 'Super awesome school filled with smart people', 'Atlanta, Georgia', 77),
+('University of Central Florida', 'The largest school in the country and also a school that specializes it great professors', 'Orlando', 65000),
+('University of Florida', 'Great medical program', 'Gainsville', 17),
+('University of Miami', 'Hey they are kind of okay?', 'Miami, Florida', 777),
+('University of South Florida', 'Always second best school', 'South Florida', 5);
 
 -- --------------------------------------------------------
 
@@ -230,16 +261,17 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`first_name`, `last_name`, `username`, `password`, `level`, `email`) VALUES
-('balls', '12345', '12345566', '$2y$10$gcYPdfIXL8gZ71/DsBorCuqjWtdNtq0F9QxpOv62fyQVenhBIlZaG', 0, 'sadpoksdfgsf'),
+('Christian', '12345', 'cdude', '$2y$10$yMeIRNj/zc8cz5iUnxjrqOQxdSzOE1sTfcZ7vv84yn2MjdZXtcfeS', 0, 'dude@gmail.com'),
 ('christian', 'Dudukovich', 'cdudukovich', '$2y$10$ZOuxtkhRTyh9qI0DUASHzOij0KoCMsbQQU7cGaUU6mBW5O1xIvEk2', 0, 'cjpeanutbutter@yahoo.com'),
+('Christian', '12345', 'cdudukovich01', '$2y$10$358li/eJH2PO4RhZ94Ed.evuQNmBq1fmaHYq83M14wPcm3G8wysJq', 0, 'cdudukovich@knights.ucf.edu'),
 ('ballls', '$_POST[password]', 'cdudukovich1', '$2y$10$MNzUFd1EdVQ2Ko7u4M/jyOSSDu/3BkR14Tm2IBM3YUmsEHx2S5Okq', 0, 'dsiljfgsf'),
+('cd', '12345', 'cduke', '$2y$10$SXS9uz6hxk.7I4S/mk8FGOkvZsUOKJwjyGOS5hTSMzCk1QQAdwDm2', 2, 'dfsdf@yahoo.com'),
 ('Christian', 'Dudukovich', 'dudukovich', '$2y$10$piBhzLJw.ruqp24dE6PutOGv.uwPDWzdEgXop1KT2gg6fVbRNAq9u', 0, 'scldkjfgs'),
-('Shit', '12345', 'sballs', '$2y$10$2FojpeEAjsHxVxC44JIup./h3WmMT3AIoI3dGA8hF5DDnAPlET0eu', 0, '12345@gmaill.com'),
 ('test', '12345', 'test', '$2y$10$PFIQCblSC8KusE2OgeJcU.Qi9NLVDZcqfOxVdmTDCUwgaD5mZBcHq', 0, 'dfsdgsdfg'),
 ('whoa', 'whoa', 'test123', '$2y$10$Ple7FwpJhs.1uNpLiIKlc.yJbyjtgnJS7Z0UVIkTlNkxvNpa5ZRC.', 0, 'dlksjfgdfg'),
 ('Tom', '12345', 'thanks', '$2y$10$DxsXlTXZ5ZTmArhSQ3dGG.t2RjG7y2Zict5wlBRSrG37qaVCpCLS6', 0, 'ballsmcballs@balls.com'),
 ('123', '12345', 'thanks33', '$2y$10$K.LjSSTpaf269ye.LLzq5upoDlSJuv26VNbqtXTH/.LuMZzDdu0gS', 0, '234'),
-('fuck', '12345', 'thankssss', '$2y$10$l1pZRTC/NUDtfSOsQO177uswE1zUkbz85ZhAooO3B9fKjiuPIs0za', 0, '12356@gmail.com ');
+('test ', '12345', 'tuser', '$2y$10$8D/78tOqW7nAOGCz3HS67ewk3B.1dbok9s9csE42wUwKm4RdPPca.', 0, 'yes@yes.com');
 
 --
 -- Constraints for dumped tables
@@ -271,12 +303,6 @@ ALTER TABLE `comments`
 ALTER TABLE `create_event`
   ADD CONSTRAINT `rso_name` FOREIGN KEY (`name`) REFERENCES `rso` (`name`),
   ADD CONSTRAINT `user_created` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
-
---
--- Constraints for table `hosts`
---
-ALTER TABLE `hosts`
-  ADD CONSTRAINT `college_name` FOREIGN KEY (`name`) REFERENCES `university` (`name`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
